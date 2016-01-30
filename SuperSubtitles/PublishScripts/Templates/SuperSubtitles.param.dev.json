@@ -1,0 +1,32 @@
+{
+  "siteName": {
+    "value": "SuperSubtitles"
+  },
+  "hostingPlanName": {
+    "value": "RAUPJC"
+  },
+  "siteLocation": {
+    "value": "West Europe"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "serverName": {
+    "value": "raupjcserver"
+  },
+  "serverLocation": {
+    "value": "West Europe"
+  },
+  "administratorLogin": {
+    "value": "vedranikus"
+  },
+  "administratorLoginPassword": {
+    "value": "raupjc#6#database"
+  },
+  "databaseName": {
+    "value": "SuperSubtitles_db"
+  }
+}
