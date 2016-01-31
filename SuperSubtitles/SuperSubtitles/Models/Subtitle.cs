@@ -8,7 +8,10 @@ namespace SuperSubtitles.Models
 	public class Subtitle
 	{
 		public int SubtitleId { get; set; }
+		public int AuthorId { get; set; }
 		public string Name { get; set; }
 		public string Movie { get; set; }
+		public string Date { get; set; }
+		public byte[] File { get; set; }
 	}
 }

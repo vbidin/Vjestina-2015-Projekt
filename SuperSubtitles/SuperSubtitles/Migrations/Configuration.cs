@@ -16,8 +16,6 @@ namespace SuperSubtitles.Migrations
 
         protected override void Seed(SuperSubtitles.Models.ApplicationDbContext context)
         {
-			context.Subtitles.AddOrUpdate(p => p.Name, new Subtitle { Name = "First subtitle ever", Movie = "Bruce Willis movie!" });
-
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //

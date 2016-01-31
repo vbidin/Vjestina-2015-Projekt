@@ -1,4 +1,4 @@
-﻿@model SuperSubtitles.Models.Subtitle
+﻿@model SuperSubtitles.Models.Score
 
 @{
     ViewBag.Title = "Delete";
@@ -8,39 +8,31 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Subtitle</h4>
+    <h4>Score</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.AuthorId)
+            @Html.DisplayNameFor(model => model.UserId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AuthorId)
+            @Html.DisplayFor(model => model.UserId)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.SubtitleId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.SubtitleId)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Movie)
+            @Html.DisplayNameFor(model => model.Value)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Movie)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
+            @Html.DisplayFor(model => model.Value)
         </dd>
 
     </dl>

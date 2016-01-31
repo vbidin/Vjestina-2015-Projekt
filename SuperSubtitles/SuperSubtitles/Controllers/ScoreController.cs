@@ -10,124 +10,107 @@ using SuperSubtitles.Models;
 
 namespace SuperSubtitles.Controllers
 {
-    public class SubtitleController : Controller
+    public class ScoreController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Subtitle
+        // GET: Score
         public ActionResult Index()
         {
-            return View(db.Subtitles.ToList());
+            return View(db.Scores.ToList());
         }
 
-        // GET: Subtitle/Details/5
+        // GET: Score/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subtitle subtitle = db.Subtitles.Find(id);
-            if (subtitle == null)
+            Score score = db.Scores.Find(id);
+            if (score == null)
             {
                 return HttpNotFound();
             }
-            return View(subtitle);
+            return View(score);
         }
 
-        // GET: Subtitle/Create
+        // GET: Score/Create
         public ActionResult Create()
         {
             return View();
         }
 
-		public FileResult Download(int id)
-		{
-			var subtitle = db.Subtitles.First(c => c.SubtitleId == id);
-			var file = subtitle.File;
-			return File(file, System.Net.Mime.MediaTypeNames.Application.Octet, "subtitles.srt");
-		}
-
-        // POST: Subtitle/Create
+        // POST: Score/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SubtitleId,AuthorId,Name,Movie,Date")] Subtitle subtitle, HttpPostedFileBase upload)
+        public ActionResult Create([Bind(Include = "ScoreId,UserId,SubtitleId,Value")] Score score)
         {
             if (ModelState.IsValid)
             {
-				if (upload != null && upload.ContentLength > 0)
-				{
-					byte[] file;
-					using (var reader = new System.IO.BinaryReader(upload.InputStream))
-					{
-						file = reader.ReadBytes(upload.ContentLength);
-					}
-					subtitle.File = file;
-				}
-
-				db.Subtitles.Add(subtitle);
+                db.Scores.Add(score);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(subtitle);
+            return View(score);
         }
 
-        // GET: Subtitle/Edit/5
+        // GET: Score/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subtitle subtitle = db.Subtitles.Find(id);
-            if (subtitle == null)
+            Score score = db.Scores.Find(id);
+            if (score == null)
             {
                 return HttpNotFound();
             }
-            return View(subtitle);
+            return View(score);
         }
 
-        // POST: Subtitle/Edit/5
+        // POST: Score/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SubtitleId,AuthorId,Name,Movie,Date")] Subtitle subtitle)
+        public ActionResult Edit([Bind(Include = "ScoreId,UserId,SubtitleId,Value")] Score score)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(subtitle).State = EntityState.Modified;
+                db.Entry(score).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(subtitle);
+            return View(score);
         }
 
-        // GET: Subtitle/Delete/5
+        // GET: Score/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subtitle subtitle = db.Subtitles.Find(id);
-            if (subtitle == null)
+            Score score = db.Scores.Find(id);
+            if (score == null)
             {
                 return HttpNotFound();
             }
-            return View(subtitle);
+            return View(score);
         }
 
-        // POST: Subtitle/Delete/5
+        // POST: Score/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Subtitle subtitle = db.Subtitles.Find(id);
-            db.Subtitles.Remove(subtitle);
+            Score score = db.Scores.Find(id);
+            db.Scores.Remove(score);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

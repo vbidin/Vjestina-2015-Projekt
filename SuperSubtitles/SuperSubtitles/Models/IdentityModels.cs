@@ -31,5 +31,7 @@ namespace SuperSubtitles.Models
         }
 
 		public System.Data.Entity.DbSet<SuperSubtitles.Models.Subtitle> Subtitles { get; set; }
+
+		public System.Data.Entity.DbSet<SuperSubtitles.Models.Score> Scores { get; set; }
 	}
 }

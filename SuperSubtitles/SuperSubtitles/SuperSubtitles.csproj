@@ -199,6 +199,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ScoreController.cs" />
     <Compile Include="Controllers\SubtitleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -207,14 +208,15 @@
     <Compile Include="Migrations\201601302331497_InitialCreate.Designer.cs">
       <DependentUpon>201601302331497_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601310001353_Initial.cs" />
-    <Compile Include="Migrations\201601310001353_Initial.Designer.cs">
-      <DependentUpon>201601310001353_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201601310106241_First.cs" />
+    <Compile Include="Migrations\201601310106241_First.Designer.cs">
+      <DependentUpon>201601310106241_First.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Score.cs" />
     <Compile Include="Models\Subtitle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -286,6 +288,11 @@
     <Content Include="Views\Subtitle\Details.cshtml" />
     <Content Include="Views\Subtitle\Edit.cshtml" />
     <Content Include="Views\Subtitle\Index.cshtml" />
+    <Content Include="Views\Score\Create.cshtml" />
+    <Content Include="Views\Score\Delete.cshtml" />
+    <Content Include="Views\Score\Details.cshtml" />
+    <Content Include="Views\Score\Edit.cshtml" />
+    <Content Include="Views\Score\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,8 +312,8 @@
     <EmbeddedResource Include="Migrations\201601302331497_InitialCreate.resx">
       <DependentUpon>201601302331497_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601310001353_Initial.resx">
-      <DependentUpon>201601310001353_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601310106241_First.resx">
+      <DependentUpon>201601310106241_First.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
