@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SuperSubtitles.Models;
+using Microsoft.AspNet.Identity;
 
 namespace SuperSubtitles.Controllers
 {
@@ -41,13 +42,6 @@ namespace SuperSubtitles.Controllers
             return View();
         }
 
-		public FileResult Download(int id)
-		{
-			var subtitle = db.Subtitles.First(c => c.SubtitleId == id);
-			var file = subtitle.File;
-			return File(file, System.Net.Mime.MediaTypeNames.Application.Octet, "subtitles.srt");
-		}
-
         // POST: Subtitle/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -56,27 +50,42 @@ namespace SuperSubtitles.Controllers
         public ActionResult Create([Bind(Include = "SubtitleId,AuthorId,Name,Movie,Date")] Subtitle subtitle, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
-            {
+			{
 				if (upload != null && upload.ContentLength > 0)
 				{
+					string date = DateTime.Now.ToString("dd/MM/yyyy");
+					int authorId = Convert.ToInt32(User.Identity.GetUserId());
+
 					byte[] file;
 					using (var reader = new System.IO.BinaryReader(upload.InputStream))
 					{
 						file = reader.ReadBytes(upload.ContentLength);
 					}
-					subtitle.File = file;
-				}
 
-				db.Subtitles.Add(subtitle);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+					subtitle.Date = date;
+					subtitle.AuthorId = authorId;
+					subtitle.File = file;
+
+					db.Subtitles.Add(subtitle);
+					db.SaveChanges();
+					return RedirectToAction("Index");
+				}			
             }
 
             return View(subtitle);
         }
 
-        // GET: Subtitle/Edit/5
-        public ActionResult Edit(int? id)
+		public FileResult Download(int id)
+		{
+			Subtitle subtitle = db.Subtitles.First(c => c.SubtitleId == id);
+			byte[] file = subtitle.File;
+			string name = subtitle.Movie + " - " + subtitle.Name;
+
+			return File(file, System.Net.Mime.MediaTypeNames.Application.Octet, name + ".srt");
+		}
+
+		// GET: Subtitle/Edit/5
+		public ActionResult Edit(int? id)
         {
             if (id == null)
             {
