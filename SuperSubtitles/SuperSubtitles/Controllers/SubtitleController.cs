@@ -16,9 +16,14 @@ namespace SuperSubtitles.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Subtitle
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
-            return View(db.Subtitles.ToList());
+			var subs = from s in db.Subtitles select s;
+			subs = subs.OrderBy(s => s.Date);
+			if (!String.IsNullOrEmpty(search))
+				subs = subs.Where(s => s.Movie.Contains(search));
+
+			return View(subs.ToList());
         }
 
         // GET: Subtitle/Details/5
@@ -36,25 +41,28 @@ namespace SuperSubtitles.Controllers
             return View(subtitle);
         }
 
-        // GET: Subtitle/Create
-        public ActionResult Create()
+		// GET: Subtitle/Upload
+		[Authorize]
+		public ActionResult Upload()
         {
             return View();
         }
 
-        // POST: Subtitle/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+
+		// POST: Subtitle/Upload
+		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SubtitleId,AuthorId,Name,Movie,Date")] Subtitle subtitle, HttpPostedFileBase upload)
+		[Authorize]
+		public ActionResult Upload([Bind(Include = "SubtitleId,AuthorId,Name,Movie,Date")] Subtitle subtitle, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
 			{
 				if (upload != null && upload.ContentLength > 0)
 				{
 					string date = DateTime.Now.ToString("dd/MM/yyyy");
-					int authorId = Convert.ToInt32(User.Identity.GetUserId());
+					string authorId = User.Identity.GetUserId();
 
 					byte[] file;
 					using (var reader = new System.IO.BinaryReader(upload.InputStream))
@@ -68,7 +76,7 @@ namespace SuperSubtitles.Controllers
 
 					db.Subtitles.Add(subtitle);
 					db.SaveChanges();
-					return RedirectToAction("Index");
+					return RedirectToAction("Upload", new { Message = "Subtitle uploaded!" });
 				}			
             }
 

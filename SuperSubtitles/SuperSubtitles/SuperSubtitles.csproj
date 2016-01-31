@@ -208,9 +208,9 @@
     <Compile Include="Migrations\201601302331497_InitialCreate.Designer.cs">
       <DependentUpon>201601302331497_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601310219227_Start.cs" />
-    <Compile Include="Migrations\201601310219227_Start.Designer.cs">
-      <DependentUpon>201601310219227_Start.cs</DependentUpon>
+    <Compile Include="Migrations\201601310511556_2nd.cs" />
+    <Compile Include="Migrations\201601310511556_2nd.Designer.cs">
+      <DependentUpon>201601310511556_2nd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -283,7 +283,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
-    <Content Include="Views\Subtitle\Create.cshtml" />
+    <Content Include="Views\Subtitle\Upload.cshtml" />
     <Content Include="Views\Subtitle\Delete.cshtml" />
     <Content Include="Views\Subtitle\Details.cshtml" />
     <Content Include="Views\Subtitle\Edit.cshtml" />
@@ -312,8 +312,8 @@
     <EmbeddedResource Include="Migrations\201601302331497_InitialCreate.resx">
       <DependentUpon>201601302331497_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601310219227_Start.resx">
-      <DependentUpon>201601310219227_Start.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601310511556_2nd.resx">
+      <DependentUpon>201601310511556_2nd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,13 +7,13 @@ namespace SuperSubtitles.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Start : IMigrationMetadata
+    public sealed partial class _2nd : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Start));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_2nd));
         
         string IMigrationMetadata.Id
         {
-            get { return "201601310219227_Start"; }
+            get { return "201601310511556_2nd"; }
         }
         
         string IMigrationMetadata.Source

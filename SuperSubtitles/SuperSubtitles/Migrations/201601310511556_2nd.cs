@@ -3,7 +3,7 @@ namespace SuperSubtitles.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Start : DbMigration
+    public partial class _2nd : DbMigration
     {
         public override void Up()
         {
@@ -23,7 +23,7 @@ namespace SuperSubtitles.Migrations
                 c => new
                     {
                         SubtitleId = c.Int(nullable: false, identity: true),
-                        AuthorId = c.Int(nullable: false),
+                        AuthorId = c.String(),
                         Name = c.String(),
                         Movie = c.String(),
                         Date = c.String(),
