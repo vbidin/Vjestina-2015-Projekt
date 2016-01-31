@@ -3,7 +3,7 @@ namespace SuperSubtitles.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -29,6 +29,30 @@ namespace SuperSubtitles.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.Scores",
+                c => new
+                    {
+                        ScoreId = c.Int(nullable: false, identity: true),
+                        UserId = c.Int(nullable: false),
+                        SubtitleId = c.Int(nullable: false),
+                        Value = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ScoreId);
+            
+            CreateTable(
+                "dbo.Subtitles",
+                c => new
+                    {
+                        SubtitleId = c.Int(nullable: false, identity: true),
+                        AuthorId = c.String(),
+                        Name = c.String(nullable: false),
+                        Movie = c.String(nullable: false),
+                        Date = c.String(),
+                        File = c.Binary(),
+                    })
+                .PrimaryKey(t => t.SubtitleId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -92,6 +116,8 @@ namespace SuperSubtitles.Migrations
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.Subtitles");
+            DropTable("dbo.Scores");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
         }

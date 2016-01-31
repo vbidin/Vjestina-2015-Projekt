@@ -1,6 +1,8 @@
 ### SuperSubtitles - Web aplikacija za upload titlova
 
-Hosted on: supersubtitles.azurewebsites.net
+Azure host link: [supersubtitles.azurewebsites.net](supersubtitles.azurewebsites.net)
+
+
 
 
 

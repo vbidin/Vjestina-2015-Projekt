@@ -1,6 +1,16 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: gainsboro
+}
+
+.navbar-inverse {
+    background-color: lightsteelblue;
+    border-color: black;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: black;
 }
 
 /* Set padding to keep content from hitting the edges */

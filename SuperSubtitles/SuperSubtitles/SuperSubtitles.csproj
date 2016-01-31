@@ -204,13 +204,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601302331497_InitialCreate.cs" />
-    <Compile Include="Migrations\201601302331497_InitialCreate.Designer.cs">
-      <DependentUpon>201601302331497_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601310511556_2nd.cs" />
-    <Compile Include="Migrations\201601310511556_2nd.Designer.cs">
-      <DependentUpon>201601310511556_2nd.cs</DependentUpon>
+    <Compile Include="Migrations\201601311450506_Initial.cs" />
+    <Compile Include="Migrations\201601311450506_Initial.Designer.cs">
+      <DependentUpon>201601311450506_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -293,6 +289,8 @@
     <Content Include="Views\Score\Details.cshtml" />
     <Content Include="Views\Score\Edit.cshtml" />
     <Content Include="Views\Score\Index.cshtml" />
+    <Content Include="Views\Subtitle\Success.cshtml" />
+    <Content Include="Views\Subtitle\Failure.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -309,11 +307,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601302331497_InitialCreate.resx">
-      <DependentUpon>201601302331497_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601310511556_2nd.resx">
-      <DependentUpon>201601310511556_2nd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601311450506_Initial.resx">
+      <DependentUpon>201601311450506_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

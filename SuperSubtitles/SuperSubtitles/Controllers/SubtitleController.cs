@@ -76,12 +76,22 @@ namespace SuperSubtitles.Controllers
 
 					db.Subtitles.Add(subtitle);
 					db.SaveChanges();
-					return RedirectToAction("Upload", new { Message = "Subtitle uploaded!" });
+					return RedirectToAction("Success");
 				}			
             }
 
-            return View(subtitle);
+			return RedirectToAction("Failure");
         }
+
+		public ActionResult Success()
+		{
+			return View();
+		}
+
+		public ActionResult Failure()
+		{
+			return View();
+		}
 
 		public FileResult Download(int id)
 		{
